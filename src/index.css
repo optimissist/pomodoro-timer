@@ -47,6 +47,11 @@ h1 {
   line-height: 1.1;
 }
 
+@media all and (max-width: 767px) {
+  h1 {
+    padding: 0.5rem;
+  }
+}
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -75,7 +80,7 @@ button:focus-visible {
   margin: 0 auto;
 }
 
-.light button, .dark button:active, .dark button:hover, .dark button:focus {
+.light button, .light .resetButton, .light .resetButton:focus, .light .resetButton:hover, .light .resetButton:active, .dark button:active, .dark button:hover, .dark button:focus {
   background-color: #D3D3D3;
   color: #213547;
 }
@@ -89,7 +94,7 @@ button:focus-visible {
   margin: 0 auto;
 }
 
-.dark button, .light button:active, .light button:hover, .light button:focus  {
+.dark button, .dark .resetButton, .dark .resetButton:focus, .dark .resetButton:hover, .dark .resetButton:active, .light button:active, .light button:hover, .light button:focus  {
   background-color: #1a1a1a;
   color: #D3D3D3;
 }

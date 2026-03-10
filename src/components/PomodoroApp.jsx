@@ -63,6 +63,15 @@ function PomodoroApp() {
     setSeconds(mode === "work" ? workDuration * 60 : breakDuration * 60);
 }, [mode, workDuration, breakDuration]);
 
+const resetSessions = () => {
+    setSessions(0);
+    localStorage.removeItem("sessions");
+};
+
+const resetDailySessions = () => {
+    setDailySessions(0);
+    localStorage.removeItem("dailySessions");
+};
 
     useEffect(() => localStorage.setItem("sessions", sessions), [sessions])
     
@@ -107,7 +116,9 @@ useEffect(() => {
             onSkip={skip} />
             <SessionTracker 
             sessions={sessions} 
-            dailySessions={dailySessions}/>
+            dailySessions={dailySessions}
+            onResetSessions={resetSessions}
+            onResetDailySessions={resetDailySessions} />
         </div>
     )
 }
