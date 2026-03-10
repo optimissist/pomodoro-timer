@@ -39,7 +39,7 @@ function PomodoroApp() {
     setDailySessions(dailySessions + 1);
      }
 
-    }, [mode, sessions, workDuration, breakDuration]);
+    }, [mode, sessions, workDuration, breakDuration, dailySessions]);
     
     const start = useCallback(() => {
         setIsRunning(true);
@@ -79,6 +79,13 @@ useEffect(() => {
     document.body.style.backgroundColor = theme === "dark" ? "#242424" : "#ffffff";
 }, [theme]);
 
+useEffect(() => {
+    localStorage.setItem("dailySessions", JSON.stringify({
+        count: dailySessions,
+        date: new Date().toLocaleDateString()
+    }));
+}, [dailySessions]);
+
     return (
         <div className={theme}>
             <h1>Pomodoro Timer</h1>
@@ -99,7 +106,8 @@ useEffect(() => {
             onReset={reset}
             onSkip={skip} />
             <SessionTracker 
-            sessions={sessions} />
+            sessions={sessions} 
+            dailySessions={dailySessions}/>
         </div>
     )
 }
